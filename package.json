@@ -1,0 +1,31 @@
+{
+  "name": "flint-chart-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "上传 Excel,用可视化配置面板生成 Flint 图表",
+  "scripts": {
+    "build": "vite build web",
+    "start": "node server/index.js",
+    "dev:server": "node --watch server/index.js",
+    "dev:web": "vite web"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "echarts": "^6.0.0",
+    "express": "^5.3.0",
+    "flint-chart": "^1.0.1",
+    "multer": "^2.5.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "vega": "^6.4.0",
+    "vega-embed": "^7.3.0",
+    "vega-lite": "^6.5.0",
+    "vega-tooltip": "^1.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.5"
+  }
+}

@@ -1,0 +1,16 @@
+# 放到 /etc/systemd/system/flint-studio.service,然后:
+#   sudo systemctl daemon-reload && sudo systemctl enable --now flint-studio
+[Unit]
+Description=Flint Chart Studio
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/flint-chart-studio
+Environment=PORT=3000
+Environment=DATA_DIR=/var/lib/flint-studio
+ExecStart=/usr/bin/env node server/index.js
+Restart=always
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
