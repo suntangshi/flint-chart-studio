@@ -19,7 +19,8 @@ fi
 
 echo "$(date '+%F %T') 更新到 ${REMOTE:0:7}"
 git merge --ff-only --quiet '@{u}'
-docker build -q -t "$NAME" .
+# 国内服务器:NPM_REGISTRY=https://registry.npmmirror.com bash deploy/server-update.sh
+docker build --build-arg NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmjs.org}" -t "$NAME" .
 docker rm -f "$NAME" >/dev/null 2>&1 || true
 docker run -d --name "$NAME" --restart unless-stopped -p "$PORT:3000" -v flint-data:/data "$NAME" >/dev/null
 
