@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/opt/flint-chart-studio
-Environment=PORT=3000
+Environment=PORT=39015
 Environment=DATA_DIR=/var/lib/flint-studio
 ExecStart=/usr/bin/env node server/index.js
 Restart=always

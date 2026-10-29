@@ -9,8 +9,8 @@ RUN npm run build && npm prune --omit=dev
 
 FROM node:22-slim
 WORKDIR /app
-ENV NODE_ENV=production PORT=3000 DATA_DIR=/data
+ENV NODE_ENV=production PORT=39015 DATA_DIR=/data
 COPY --from=build /app /app
 VOLUME /data
-EXPOSE 3000
+EXPOSE 39015
 CMD ["node", "server/index.js"]

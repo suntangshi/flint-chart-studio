@@ -7,4 +7,4 @@ TARGET="${1:?用法: ./deploy/deploy.sh user@host}"
 APP_DIR=/opt/flint-chart-studio
 
 rsync -az --delete --exclude node_modules --exclude web/dist --exclude data --exclude '*.zip' ./ "$TARGET:$APP_DIR/"
-ssh "$TARGET" "cd $APP_DIR && npm ci && npm run build && sudo mkdir -p /var/lib/flint-studio && sudo chown -R www-data /var/lib/flint-studio && sudo systemctl restart flint-studio && sleep 2 && curl -fsS -o /dev/null http://127.0.0.1:3000/api/datasets && echo 部署成功"
+ssh "$TARGET" "cd $APP_DIR && npm ci && npm run build && sudo mkdir -p /var/lib/flint-studio && sudo chown -R www-data /var/lib/flint-studio && sudo systemctl restart flint-studio && sleep 2 && curl -fsS -o /dev/null http://127.0.0.1:39015/api/datasets && echo 部署成功"

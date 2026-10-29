@@ -6,7 +6,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 NAME=flint-studio
-PORT="${PORT:-3000}"
+PORT="${PORT:-39015}"
 
 git fetch --quiet origin
 LOCAL=$(git rev-parse HEAD)
@@ -22,7 +22,7 @@ git merge --ff-only --quiet '@{u}'
 # 国内服务器:NPM_REGISTRY=https://registry.npmmirror.com bash deploy/server-update.sh
 docker build --build-arg NPM_REGISTRY="${NPM_REGISTRY:-https://registry.npmjs.org}" -t "$NAME" .
 docker rm -f "$NAME" >/dev/null 2>&1 || true
-docker run -d --name "$NAME" --restart unless-stopped -p "$PORT:3000" -v flint-data:/data "$NAME" >/dev/null
+docker run -d --name "$NAME" --restart unless-stopped -p "$PORT:39015" -v flint-data:/data "$NAME" >/dev/null
 
 for i in $(seq 1 20); do
   if curl -fsS -o /dev/null "http://127.0.0.1:$PORT/api/datasets"; then echo "已上线:http://<服务器IP>:$PORT"; exit 0; fi

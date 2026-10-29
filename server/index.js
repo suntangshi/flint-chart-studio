@@ -8,7 +8,7 @@ import { describeColumns } from './infer.js';
 import { makeSampleRows } from './sample.js';
 import * as store from './store.js';
 
-const PORT = Number(process.env.PORT || 3000);
+const PORT = Number(process.env.PORT || 39015);
 const MAX_ROWS = 200_000;
 
 const app = express();

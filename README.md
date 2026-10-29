@@ -18,10 +18,10 @@
 ```bash
 npm install
 npm run build
-npm start            # http://localhost:3000   端口用 PORT=xxxx 改
+npm start            # http://localhost:39015   端口用 PORT=xxxx 改
 ```
 
-开发模式:`npm run dev:server` 和 `npm run dev:web` 各开一个终端,访问 Vite 的 http://localhost:5173(已把 `/api` 代理到 3000)。
+开发模式:`npm run dev:server` 和 `npm run dev:web` 各开一个终端,访问 Vite 的 http://localhost:5173(已把 `/api` 代理到 39015)。
 
 数据和图表配置存在 `data/` 目录(`DATA_DIR` 环境变量可改位置),删掉即清空。
 
@@ -78,7 +78,7 @@ DELETE /api/charts/:id
 
 ```bash
 docker build -t flint-studio .
-docker run -d --name flint-studio --restart unless-stopped -p 3000:3000 -v flint-data:/data flint-studio
+docker run -d --name flint-studio --restart unless-stopped -p 39015:39015 -v flint-data:/data flint-studio
 ```
 
 **方式一补充:从 GitHub 拉取并自动更新**
