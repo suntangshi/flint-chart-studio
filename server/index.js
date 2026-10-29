@@ -67,4 +67,11 @@ app.use((err, _req, res, _next) => {
   res.status(err.status || (err.code === 'LIMIT_FILE_SIZE' ? 413 : 500)).json({ error: err.code === 'LIMIT_FILE_SIZE' ? '文件超过 50MB' : err.message });
 });
 
-app.listen(PORT, () => console.log(`Flint Chart Studio: http://localhost:${PORT}`));
+// Express 5 把监听失败(如端口被占用)作为回调参数传进来,必须检查,否则会误报启动成功后静默退出
+app.listen(PORT, (err) => {
+  if (err) {
+    console.error(err.code === 'EADDRINUSE' ? `端口 ${PORT} 已被占用,请先停掉占用它的程序,或用 PORT 环境变量换一个端口` : err);
+    process.exit(1);
+  }
+  console.log(`Flint Chart Studio: http://localhost:${PORT}`);
+});
